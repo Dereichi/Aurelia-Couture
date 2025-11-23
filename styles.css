@@ -172,7 +172,7 @@ marquee {
     background-size: cover;       /* Makes the image fill the whole area */
     background-position: center;  /* Keeps the important part centered */
     background-repeat: no-repeat; /* Prevents duplicates */
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
