@@ -164,7 +164,7 @@ body {
    ========================================= */
 .grid-menu-section {
     padding: 80px 5%;
-    background-color: #fff;
+    background-color: #0e0101;
 }
 
 .menu-grid {
@@ -177,8 +177,8 @@ body {
 }
 
 .menu-card {
-    background: #fff;
-    border: 1px solid #eee;
+    background: #250235;
+    border: 1px solid #eeeeee;
     border-radius: 12px;
     padding: 30px 20px;
     text-align: center;
