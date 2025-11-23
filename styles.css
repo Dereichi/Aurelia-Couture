@@ -3,7 +3,7 @@
    ========================================= */
 :root {
     --purple: #5b2e8a;
-    --purple-dark: #4a2570;
+    --purple-dark: #22083b;
     --gold: #d4af37;
     --gold-hover: #b5952f;
     --text-dark: #222;
@@ -211,7 +211,7 @@ body {
 }
 
 .menu-card p {
-    color: var(--purple);
+    color: var(--bg-off-white);
     font-size: 0.95rem;
     margin-bottom: 20px;
     flex-grow: 1; /* Pushes button to bottom */
