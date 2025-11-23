@@ -172,13 +172,13 @@ marquee {
     background-size: cover;       /* Makes the image fill the whole area */
     background-position: center;  /* Keeps the important part centered */
     background-repeat: no-repeat; /* Prevents duplicates */
-    min-height: 120vh;
+    min-height: 180vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 180px;
+    padding-bottom: 180px;
 }
 
 .hero-content {
