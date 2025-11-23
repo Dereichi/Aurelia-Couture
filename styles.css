@@ -239,7 +239,7 @@ marquee {
    4. Grid Menu Section
    ========================================= */
 .grid-menu-section {
-    padding: 80px 5%;
+    padding: 80px 5% 0 5%;
     background-color: #1a1a1a;
 }
 
@@ -314,7 +314,7 @@ marquee {
     background: #1a1a1a;
     color: #eee;
     padding: 60px 0 20px;
-    margin-top: 50px;
+    margin-top: 0;
 }
 
 .container {
