@@ -31,6 +31,22 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* ================================
+   Marquee
+   ================================ */
+.marquee-container {
+    background: linear-gradient(135deg, var(--purple) 0%, var(--gold) 100%);
+    color: var(--bg-off-white);
+    padding: 12px 0;
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: var(--shadow);
+}
+
+marquee {
+    display: block;
+}
+
 /* =========================================
    2. Navbar
    ========================================= */
