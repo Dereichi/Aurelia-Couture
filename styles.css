@@ -170,15 +170,20 @@ marquee {
     max-width: 800px;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: var(--bg-off-white);
-}
-
-.hero p {
-    color: var(--bg-light);
+.hero {
+    /* Default gradient background; add an image by setting
+       an inline style or updating --hero-image in :root */
+    background-image: linear-gradient(135deg, rgba(91,46,138,0.08), rgba(212,175,55,0.05));
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* occupy full viewport height to push content down */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
     font-size: 1.1rem;
     margin-bottom: 30px;
     max-width: 600px;
