@@ -80,6 +80,8 @@
 		} else {
 			navMenu.style.display = '';
 		}
+		// Let CSS control #mobileToggle visibility
+		mobileToggle.style.display = '';
 
 		mobileToggle.addEventListener('click', function () {
 			const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
@@ -96,6 +98,8 @@
 			} else {
 				navMenu.style.display = 'none';
 			}
+			// Let CSS control #mobileToggle visibility
+			mobileToggle.style.display = '';
 		});
 	}
 

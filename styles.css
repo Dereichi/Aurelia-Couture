@@ -1,3 +1,12 @@
+/* Hamburger menu toggle visibility */
+#mobileToggle {
+    display: none;
+}
+@media (max-width: 700px) {
+    #mobileToggle {
+        display: inline-block;
+    }
+}
 /* =========================================
    1. Variables & Reset
    ========================================= */
@@ -320,7 +329,8 @@ marquee {
 
 .social-links a:hover .social-icon {
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.2);
+    filter: brightness(1.1);
 }
 
 .footer-separator hr {
