@@ -155,7 +155,10 @@ marquee {
 .hero {
     background: linear-gradient(135deg, rgba(91,46,138,0.08), rgba(212,175,55,0.05));
     background-image: url('https://i.postimg.cc/0QxyX9Ck/IMG-20251120-WA0026-2.png');
-    min-height: 80vh; /* Taller hero */
+    background-size: cover;       /* Makes the image fill the whole area */
+    background-position: center;  /* Keeps the important part centered */
+    background-repeat: no-repeat; /* Prevents duplicates */
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -175,7 +178,7 @@ marquee {
 }
 
 .hero p {
-    color: var(--text-muted);
+    color: var(--bg-light);
     font-size: 1.1rem;
     margin-bottom: 30px;
     max-width: 600px;
