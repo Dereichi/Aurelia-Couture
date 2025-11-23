@@ -91,10 +91,24 @@ marquee {
     min-height: 50px;
 }
 .navbar .logo img {
-    height: 45px;
+    height: 72px; /* larger logo for prominence */
     width: auto;
     display: block;
     object-fit: contain;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    filter: drop-shadow(0 6px 18px rgba(0,0,0,0.18));
+}
+
+/* specific class for the logo image so we can target it directly */
+.site-logo { display: block; height: 72px; width: auto; }
+
+/* Visually hidden helper for accessibility */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
 }
 
 .navbar .nav-menu {
@@ -429,6 +443,7 @@ marquee {
         transform: none;
         margin: 0 auto 10px auto;
     }
+    .navbar .logo img, .site-logo { height: 48px; }
     .navbar .sign-up-btn, .navbar .nav-menu {
         margin: 0;
     }
