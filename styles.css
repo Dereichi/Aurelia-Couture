@@ -63,13 +63,40 @@ marquee {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 5%; /* Added side padding */
+    padding: 1rem 5%;
     background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid #eee;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+/* Navbar new layout */
+.navbar .sign-up-btn {
+    order: 1;
+    margin-right: auto;
+}
+.navbar .logo {
+    order: 2;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+.navbar .logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+.navbar .nav-menu {
+    order: 3;
+    margin-left: auto;
 }
 
 .navbar .logo {
@@ -384,26 +411,30 @@ marquee {
         padding: 15px;
         gap: 15px;
     }
-    
+    .navbar .logo {
+        position: static;
+        left: unset;
+        transform: none;
+        margin: 0 auto 10px auto;
+    }
+    .navbar .sign-up-btn, .navbar .nav-menu {
+        margin: 0;
+    }
     .nav-menu {
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
     }
-
     .hero h1 {
         font-size: 2rem;
     }
-    
     .hero p {
         font-size: 1rem;
     }
-
     .btn-group {
         flex-direction: column;
         width: 100%;
     }
-
     .btn {
         width: 100%;
     }
