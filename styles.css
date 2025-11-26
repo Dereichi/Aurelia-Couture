@@ -378,15 +378,21 @@ body {
 .footer a:hover { color: var(--gold); opacity: 1; }
 .footer p { color: rgba(255,255,255,0.7); line-height: 1.8; }
 
-.social-icons {
+.social-links {
     display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 30px; /* Increased from 15px to 30px for more space */
+    align-items: center; /* Ensures they line up perfectly */
 }
 
-.social-icons:hover { 
-    transform: scale(1.1);
-    transition: var(--transition);
+.social-links a {
+    display: flex; /* Ensures the anchor tag wraps the image tightly */
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px); /* subtle lift effect */
 }
 
 .footer-bottom {
