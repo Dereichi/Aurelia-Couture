@@ -380,7 +380,7 @@ body {
 
 .social-links {
     display: flex;
-    gap: 30px; /* Increased from 15px to 30px for more space */
+    gap: 20px; /* Increased from 15px to 30px for more space */
     align-items: center; /* Ensures they line up perfectly */
 }
 
