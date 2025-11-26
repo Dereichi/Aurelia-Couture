@@ -188,11 +188,13 @@ body {
 }
 
 /* =========================================
-   4. Hero Section (Clean & White)
+   4. Hero Section (Luxury Dark Theme)
    ========================================= */
 .hero {
-    /* Removed background image for professional clean look */
-    background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f4f4f4 100%);
+    /* REVERSED: Deep Regal Purple Background */
+    background-color: var(--purple); 
+    /* added a subtle gradient for depth so it doesn't look flat */
+    background-image: radial-gradient(circle at 50% 50%, #3e0536 0%, var(--purple) 100%);
     min-height: 85vh;
     display: flex;
     align-items: center;
@@ -209,7 +211,7 @@ body {
 
 .hero-subtitle {
     display: block;
-    color: var(--gold);
+    color: var(--gold); /* Gold pops beautifully on purple */
     font-weight: 700;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -222,12 +224,14 @@ body {
     font-size: 4rem;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    color: var(--purple);
+    /* REVERSED: Text is now White */
+    color: #ffffff; 
 }
 
 .hero p {
     font-size: 1.1rem;
-    color: var(--text-muted);
+    /* REVERSED: Slight transparent white for elegance on dark bg */
+    color: rgba(255, 255, 255, 0.85); 
     margin-bottom: 2.5rem;
     font-weight: 300;
     max-width: 600px;
@@ -251,9 +255,12 @@ body {
     transition: var(--transition);
 }
 
+/* PRIMARY BUTTON: Shop Collections */
+/* Made White to stand out against the Purple background */
 .btn-primary {
-    background: var(--purple);
-    color: #fff;
+    background: #ffffff;
+    color: var(--purple);
+    font-weight: 700;
 }
 
 .btn-primary:hover {
@@ -261,15 +268,17 @@ body {
     color: var(--purple);
 }
 
+/* SECONDARY BUTTON: Customize Style */
+/* Made Gold as requested */
 .btn-secondary {
     background: transparent;
-    border: 1px solid var(--purple);
-    color: var(--purple);
+    border: 1px solid var(--gold);
+    color: var(--gold);
 }
 
 .btn-secondary:hover {
-    border-color: var(--gold);
-    color: var(--gold);
+    background: var(--gold);
+    color: var(--purple); /* Text turns purple for readability */
 }
 
 /* =========================================
@@ -481,8 +490,8 @@ body {
     .hamburger.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* Hero Mobile */
-    .hero { min-height: 70vh; }
     .hero h1 { font-size: 2.5rem; }
+    .hero { min-height: 70vh; }
     .btn-group { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
     .btn { width: 100%; }
 
