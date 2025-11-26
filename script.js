@@ -1,136 +1,149 @@
-// Back-to-top button, mobile nav toggle, and social handlers
-(function () {
-	'use strict';
+/**
+ * Aurelia Couture - Main Functionality
+ * Structured for easy integration into larger codebases.
+ */
 
-	// Back to top button
-	const backToTopBtn = document.getElementById('backToTopBtn');
-	function checkScroll() {
-		if (!backToTopBtn) return;
-		if (window.scrollY > 240) {
-			backToTopBtn.style.opacity = '1';
-			backToTopBtn.style.transform = 'translateY(0)';
-			backToTopBtn.style.pointerEvents = 'auto';
-		} else {
-			backToTopBtn.style.opacity = '0';
-			backToTopBtn.style.transform = 'translateY(8px)';
-			backToTopBtn.style.pointerEvents = 'none';
-		}
-	}
+const AureliaCouture = {
+    settings: {
+        scrollThreshold: 300, // Distance to scroll before showing BackToTop
+        mobileBreakpoint: 768
+    },
 
-	if (backToTopBtn) {
-		// initial state
-		backToTopBtn.style.transition = 'opacity .25s ease, transform .25s ease';
-		backToTopBtn.style.opacity = '0';
-		backToTopBtn.style.transform = 'translateY(8px)';
-		backToTopBtn.style.pointerEvents = 'none';
+    init: function() {
+        this.initMobileMenu();
+        this.initBackToTop();
+        this.initSmoothScroll();
+        this.initSocialHandlers();
+    },
 
-		backToTopBtn.addEventListener('click', function () {
-			window.scrollTo({ top: 0, behavior: 'smooth' });
-		});
+    /**
+     * Handles Mobile Navigation (Hamburger)
+     * Toggles CSS classes instead of inline styles for better performance.
+     */
+    initMobileMenu: function() {
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
 
-		window.addEventListener('scroll', checkScroll, { passive: true });
-		// run once on load
-		checkScroll();
-	}
+        // Guard clause: Exit if elements don't exist on this page
+        if (!hamburger || !navMenu) return;
 
-	// Mobile nav toggle (inject button if missing)
-	const nav = document.querySelector('.navbar');
-	const navMenu = document.querySelector('.nav-menu');
+        // Toggle Menu
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent document click from firing immediately
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
 
-	function createMobileToggle() {
-		if (!nav || !navMenu) return null;
-		let existing = document.getElementById('mobileToggle');
-		if (existing) return existing;
+        // Close menu when clicking a link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
 
-		const btn = document.createElement('button');
-		btn.id = 'mobileToggle';
-		btn.type = 'button';
-		btn.setAttribute('aria-expanded', 'false');
-		btn.setAttribute('aria-label', 'Toggle navigation');
-		btn.innerHTML = '&#9776;'; // hamburger
-		btn.style.fontSize = '20px';
-		btn.style.background = 'transparent';
-		btn.style.border = 'none';
-		btn.style.cursor = 'pointer';
-		btn.style.color = 'var(--purple, #5b2e8a)';
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
 
-		// insert before sign-up button if present
-		const signUp = nav.querySelector('.sign-up-btn');
-		nav.insertBefore(btn, signUp || nav.firstChild);
-		return btn;
-	}
+        // Reset menu state on window resize (prevents layout bugs)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > this.settings.mobileBreakpoint) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    },
 
-	function toggleNavDisplay(expand) {
-		if (!navMenu) return;
-		const isExpanded = typeof expand === 'boolean' ? expand : navMenu.style.display === 'none' || getComputedStyle(navMenu).display === 'none';
-		if (isExpanded) {
-			navMenu.style.display = 'flex';
-			navMenu.style.flexDirection = 'column';
-			navMenu.style.gap = '12px';
-		} else {
-			navMenu.style.display = 'none';
-		}
-	}
+    /**
+     * Handles Back to Top Button
+     * Uses CSS classes for visibility to ensure smooth transitions.
+     */
+    initBackToTop: function() {
+        const btn = document.getElementById('backToTopBtn');
+        if (!btn) return;
 
-	const mobileToggle = createMobileToggle();
-	if (mobileToggle) {
-		// set initial display based on viewport
-		if (window.innerWidth <= 700) {
-			navMenu.style.display = 'none';
-		} else {
-			navMenu.style.display = '';
-		}
-		// Let CSS control #mobileToggle visibility
-		mobileToggle.style.display = '';
+        // Scroll Logic
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY || document.documentElement.scrollTop;
+            
+            if (scrolled > this.settings.scrollThreshold) {
+                // We use 'display: flex' in CSS via a class or inline
+                // But matching your CSS request, we simply toggle display here
+                btn.style.display = 'flex';
+                // Small timeout to allow display to apply before opacity transition
+                setTimeout(() => { btn.style.opacity = '1'; }, 10);
+            } else {
+                btn.style.opacity = '0';
+                // Wait for transition to finish before hiding
+                setTimeout(() => { 
+                    if (scrolled <= this.settings.scrollThreshold) btn.style.display = 'none'; 
+                }, 300);
+            }
+        }, { passive: true });
 
-		mobileToggle.addEventListener('click', function () {
-			const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-			mobileToggle.setAttribute('aria-expanded', String(!expanded));
-			// toggle
-			toggleNavDisplay(!expanded);
-		});
+        // Click Logic
+        btn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    },
 
-		// Reset nav display on resize
-		window.addEventListener('resize', function () {
-			if (window.innerWidth > 700) {
-				navMenu.style.display = '';
-				mobileToggle.setAttribute('aria-expanded', 'false');
-			} else {
-				navMenu.style.display = 'none';
-			}
-			// Let CSS control #mobileToggle visibility
-			mobileToggle.style.display = '';
-		});
-	}
+    /**
+     * Global Social Media Handler
+     * Attached to window to support the existing HTML 'onclick' attributes.
+     */
+    initSocialHandlers: function() {
+        window.socialClick = function(platform) {
+            const urls = {
+                'Facebook': 'https://www.facebook.com',
+                'Instagram': 'https://www.instagram.com',
+                'X': 'https://twitter.com',
+                'LinkedIn': 'https://www.linkedin.com'
+            };
 
-	// Social click handler referenced by inline onclick attributes
-	window.socialClick = function (platform) {
-		const map = {
-			Facebook: 'https://www.facebook.com',
-			Instagram: 'https://www.instagram.com',
-			X: 'https://twitter.com'
-		};
-		const url = map[platform] || '#';
-		// open in new tab
-		if (url === '#') {
-			console.log('Social click:', platform);
-		} else {
-			window.open(url, '_blank', 'noopener');
-		}
-	};
+            const url = urls[platform];
+            
+            if (url) {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            } else {
+                console.warn(`Aurelia Couture: No URL defined for ${platform}`);
+            }
+        };
+    },
 
-	// Smooth scroll for anchor links within page
-	document.addEventListener('click', function (e) {
-		const target = e.target.closest('a[href^="#"]');
-		if (!target) return;
-		const href = target.getAttribute('href');
-		if (href === '#' || href === '#!') return;
-		const el = document.querySelector(href);
-		if (el) {
-			e.preventDefault();
-			el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-		}
-	});
+    /**
+     * Smooth Scroll for Anchor Links
+     * Modern approach for internal page links (e.g., #contact)
+     */
+    initSmoothScroll: function() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#' || targetId === '#!') return;
 
-})();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    }
+};
 
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    AureliaCouture.init();
+});

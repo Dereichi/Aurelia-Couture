@@ -4,99 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aurelia Couture - Timeless Elegance</title>
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- Google Fonts for Luxury Aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-     <!-- Marquee for upcoming events -->
-    <div class="marquee-container">
-        <marquee behavior="scroll" direction="left" scrollamount="5">
-            🔜 Upcoming Events: 💎 Exclusive VIP Preview - Dec 10, 2025 ⭐ | 👗 Fashion Gala - Dec 15, 2025 👠 | 🎄 Christmas Collection Launch - Dec 20, 2025 ❄️ | 🎉 New Year Special Sale - Jan 1, 2026 ✨ | 🎀 Visit Aurelia Couture Today! 🎗️
-        </marquee>
+     <!-- Professional CSS Marquee -->
+    <div class="marquee-wrapper">
+        <div class="marquee-content">
+            <span>🔜 Upcoming Events: 💎 Exclusive VIP Preview - Dec 10, 2025 ⭐</span>
+            <span class="separator">|</span>
+            <span>👗 Fashion Gala - Dec 15, 2025 👠</span>
+            <span class="separator">|</span>
+            <span>🎄 Christmas Collection Launch - Dec 20, 2025 ❄️</span>
+            <span class="separator">|</span>
+            <span>🎉 New Year Special Sale - Jan 1, 2026 ✨</span>
+            <span class="separator">|</span>
+            <span>🎀 Visit Aurelia Couture Today! 🎗️</span>
+        </div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="sign-up-btn">Sign up</a>
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                Aurelia <span class="couture-text">Couture</span>
+            </a>
 
-            <div class="logo">
-                <a href="index.html" class="logo-link" aria-label="Aurelia Couture home">
-                    <img src="images/Logo.png" alt="Aurelia Couture Logo" class="site-logo">
-                </a>
-                <span class="visually-hidden">Aurelia Couture</span>
+            <!-- Hamburger Icon (Visible on Mobile) -->
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
 
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="trustees.html">Board of Trustees</a></li>
-                <li><a href="inquiries.html">Inquiries</a></li>
-                <li><a href="events.html">Events</a></li>
-            </ul>
+            <!-- Nav Links & Action Button -->
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="trustees.html">Board of Trustees</a></li>
+                    <li><a href="inquiries.html">Inquiries</a></li>
+                    <li><a href="events.html">Events</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#" class="btn-signup">Sign In / Join</a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Clean, White, Typographic) -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Where Timeless Elegance Meets Modern Fashion</h1>
-            <p>Step into a world of luxury fashion crafted for bold, confident, and sophisticated individuals. Explore collections that blend artistry, craftsmanship, and premium style, designed to elevate every moment.</p>
+            <span class="hero-subtitle">Est. 2025</span>
+            <h1>Where Timeless Elegance<br>Meets Modern Fashion</h1>
+            <p>Step into a world of luxury crafted for the bold. We blend artistry with premium style to elevate every moment.</p>
             <div class="btn-group">
-                <button class="btn btn-purple">Shop Collections</button>
-                <button class="btn btn-gold">Customize Your Style</button>
+                <button class="btn btn-primary">Shop Collections</button>
+                <button class="btn btn-secondary">Customize Style</button>
             </div>
         </div>
     </section>
 
     <!-- Grid Menu Section -->
     <section class="grid-menu-section">
-        <div class="menu-grid">
-            <!-- Item 1 -->
-            <div class="menu-card">
-                <div class="menu-icon">🛍️</div>
-                <h3>Product Showcase</h3>
-                <p>Curated collections for every season – see the products page.</p>
-                <a href="#" class="learn-more">Learn More</a>
-            </div>
-            <!-- Item 2 -->
-            <div class="menu-card">
-                <div class="menu-icon">📅</div>
-                <h3>Appointments</h3>
-                <p>Book private fittings and consultations with our stylists.</p>
-                <a href="#" class="learn-more">Learn More</a>
-            </div>
-            <!-- Item 3 -->
-            <div class="menu-card">
-                <div class="menu-icon">🎉</div>
-                <h3>Events</h3>
-                <p>Stay updated on launches, pop-ups, and workshops.</p>
-                <a href="#" class="learn-more">Learn More</a>
-            </div>
-            <!-- Item 4 -->
-            <div class="menu-card">
-                <div class="menu-icon">👁️</div>
-                <h3>Our Philosophy</h3>
-                <p>We combine timeless tailoring with modern sustainability practices.</p>
-                <a href="#" class="learn-more">Learn More</a>
-            </div>
-            <!-- Item 5 -->
-            <div class="menu-card">
-                <div class="menu-icon">🌿</div>
-                <h3>Shop Ethically</h3>
-                <p>Limited runs, high-quality materials, local artisans.</p>
-                <a href="#" class="learn-more">Learn More</a>
-            </div>
-            <!-- Item 6 -->
-            <div class="menu-card">
-                <div class="menu-icon">🤝</div>
-                <h3>Join Us</h3>
-                <p>Subscribe for launch announcements and exclusive invites.</p>
-                <a href="#" class="learn-more">Learn More</a>
+        <div class="container">
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-card">
+                    <div class="menu-icon">🛍️</div>
+                    <h3>Collections</h3>
+                    <p>Curated seasonal attire.</p>
+                    <a href="products.html" class="learn-more">View</a>
+                </div>
+                <!-- Item 2 -->
+                <div class="menu-card">
+                    <div class="menu-icon">📅</div>
+                    <h3>Appointments</h3>
+                    <p>Book private fittings.</p>
+                    <a href="#" class="learn-more">Book</a>
+                </div>
+                <!-- Item 3 -->
+                <div class="menu-card">
+                    <div class="menu-icon">🎉</div>
+                    <h3>Events</h3>
+                    <p>Launches & Pop-ups.</p>
+                    <a href="events.html" class="learn-more">RSVP</a>
+                </div>
+                <!-- Item 4 -->
+                <div class="menu-card">
+                    <div class="menu-icon">👁️</div>
+                    <h3>Philosophy</h3>
+                    <p>Timeless tailoring.</p>
+                    <a href="#" class="learn-more">Read</a>
+                </div>
+                <!-- Item 5 -->
+                <div class="menu-card">
+                    <div class="menu-icon">🌿</div>
+                    <h3>Sustainability</h3>
+                    <p>Ethical craftsmanship.</p>
+                    <a href="#" class="learn-more">Explore</a>
+                </div>
+                <!-- Item 6 -->
+                <div class="menu-card">
+                    <div class="menu-icon">🤝</div>
+                    <h3>Newsletter</h3>
+                    <p>Exclusive invites.</p>
+                    <a href="#" class="learn-more">Join</a>
+                </div>
             </div>
         </div>
     </section>
@@ -105,12 +122,12 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
+                <div class="footer-section brand">
                     <h3>Aurelia Couture</h3>
-                    <p style="color: #aaa;">Where Timeless Elegance Meets Modern Fashion.</p>
+                    <p>Redefining Luxury.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
+                    <h4>Discover</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="products.html">Products</a></li>
@@ -121,11 +138,11 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p style="color: #aaa;">Email: info@aureliacouture.com</p>
-                    <p style="color: #aaa;">Phone: +1 (555) 123-4567</p>
+                    <p>info@aureliacouture.com</p>
+                    <p>+1 (555) 123-4567</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Follow Us</h4>
+                    <h4>Social</h4>
                     <div class="social-links">
                         <a href="#" onclick="socialClick('Facebook')"><img src="images/facebook.png" alt="Facebook" class="social-icon"></a>
                         <a href="#" onclick="socialClick('Instagram')"><img src="images/instagram.png" alt="Instagram" class="social-icon"></a>
@@ -133,16 +150,19 @@
                     </div>
                 </div> 
             </div>
-            <div class="footer-separator">
-                <hr>
-            </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Aurelia Couture. All rights reserved.</p>
+                <p>&copy; 2025 Aurelia Couture.</p>
             </div>
         </div>
     </footer>
 
-    <button id="backToTopBtn" title="Go to top">🡡</button>
+    <!-- SVG Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4L12 20M12 4L5 11M12 4L19 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
     <script src="script.js"></script>
 </body>
 </html>
