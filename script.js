@@ -10,10 +10,15 @@ const AureliaCouture = {
     },
 
     init: function() {
+        // Ensure cross-page helpers run first
+        this.ensureBackToTopExists();
+        this.ensureFlexibleNavSupport();
+
         this.initMobileMenu();
         this.initBackToTop();
         this.initSmoothScroll();
         this.initSocialHandlers();
+        this.enhanceProductImages();
     },
 
     /**
@@ -140,6 +145,81 @@ const AureliaCouture = {
                 }
             });
         });
+    },
+
+    /**
+     * Ensure BackToTop button exists on pages that don't include it
+     */
+    ensureBackToTopExists: function() {
+        if (document.getElementById('backToTopBtn')) return;
+        try {
+            const btn = document.createElement('button');
+            btn.id = 'backToTopBtn';
+            btn.title = 'Go to top';
+            btn.type = 'button';
+            btn.textContent = '🡡';
+            // Basic inline styles kept minimal; main styling lives in CSS
+            btn.style.display = 'none';
+            btn.style.opacity = '0';
+            document.body.appendChild(btn);
+        } catch (e) {
+            // fail silently
+            console.warn('AureliaCouture: could not create BackToTop button', e);
+        }
+    },
+
+    /**
+     * Make the mobile menu initialization work across pages that use
+     * different nav structures by creating or mapping expected IDs.
+     * This will avoid replacing your existing initMobileMenu implementation;
+     * instead it ensures the expected `#hamburger` and `#nav-menu` exist.
+     */
+    ensureFlexibleNavSupport: function() {
+        // find a nav element
+        const nav = document.querySelector('nav') || document.querySelector('.navbar');
+        if (!nav) return;
+
+        // Try to find menu using common selectors
+        const menuSelectors = ['.nav-menu', '.nav-links', 'ul.nav-menu', 'ul.nav-links', 'ul'];
+        let menuEl = null;
+        for (const sel of menuSelectors) {
+            const m = nav.querySelector(sel);
+            if (m) { menuEl = m; break; }
+        }
+
+        // If no explicit menu found, nothing to do
+        if (!menuEl) return;
+
+        // Ensure the menu has the id expected by initMobileMenu
+        if (!menuEl.id) menuEl.id = 'nav-menu';
+        // Ensure the menu also has the class expected by CSS
+        if (!menuEl.classList.contains('nav-menu')) menuEl.classList.add('nav-menu');
+
+        // Ensure a hamburger button exists with ID expected by initMobileMenu
+        let hamburger = document.getElementById('hamburger');
+        if (!hamburger) {
+            hamburger = document.createElement('button');
+            hamburger.id = 'hamburger';
+            hamburger.type = 'button';
+            hamburger.setAttribute('aria-label', 'Toggle navigation');
+            hamburger.className = 'hamburger';
+            // simple inner structure (three bars) - styling comes from CSS
+            hamburger.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
+            // Insert hamburger before the menu
+            nav.insertBefore(hamburger, menuEl);
+        }
+    },
+
+    /**
+     * Adds responsive helper classes to product images across product pages
+     */
+    enhanceProductImages: function() {
+        try {
+            const imgs = document.querySelectorAll('.product-images img, .main-image img, .product-details-section img');
+            imgs.forEach(img => img.classList.add('responsive-img'));
+        } catch (e) {
+            // ignore if structure differs
+        }
     }
 };
 
